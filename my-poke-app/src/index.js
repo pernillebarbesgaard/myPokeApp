@@ -17,40 +17,8 @@ const router = createHashRouter([
                 element: <FrontPage key={1}/>,
             },
             {
-                path: "/gen1",
+                path: "/pokedex",
                 element: <FrontPage key={1}/>,
-            },
-            {
-                path: "/gen2",
-                element: <FrontPage key={2}/>,
-            },
-            {
-                path: "/gen3",
-                element: <FrontPage key={3}/>,
-            },
-            {
-                path: "/gen4",
-                element: <FrontPage key={4}/>,
-            },
-            {
-                path: "/gen5",
-                element: <FrontPage key={5}/>,
-            },
-            {
-                path: "/gen6",
-                element: <FrontPage key={6}/>,
-            },
-            {
-                path: "/gen7",
-                element: <FrontPage key={7}/>,
-            },
-            {
-                path: "/gen8",
-                element: <FrontPage key={8}/>,
-            },
-            {
-                path: "/gen9",
-                element: <FrontPage key={9}/>,
             },
             {
                 path: "/about/:id",

@@ -1,0 +1,141 @@
+.filterbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+    width: 50%;
+    height: 50%;
+    background-color: #cacaca;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.type-container {
+    display: grid;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+    width: 100%;
+    height: 100%;
+    background-color: #cacaca;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+
+.type-container button {
+  padding: 0px;
+  margin: 5px;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  box-sizing: border-box;
+  width: 5rem;
+  height: 2rem;
+  border: 2px transparent;
+}
+
+.row {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.gen-container button {
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  box-sizing: border-box;
+
+}
+
+button.normal {
+    background-color: #A8A77A;
+  }
+  
+  button.fire {
+    background-color: #EE8130;
+  }
+  
+  button.water {
+    background-color: #6390F0;
+  }
+  
+  button.electric {
+    background-color: #F7D02C;
+  }
+  
+  button.grass {
+    background-color: #7AC74C;
+  }
+  
+  button.ice {
+    background-color: #96D9D6;
+  }
+  
+  button.fighting {
+    background-color: #C22E28;
+  }
+  
+  button.poison {
+    background-color: #A33EA1;
+  }
+  
+  button.ground {
+    background-color: #E2BF65;
+  }
+  
+  button.flying {
+    background-color: #A98FF3;
+  }
+  
+  button.psychic {
+    background-color: #F95587;
+  }
+  
+  button.bug {
+    background-color: #A6B91A;
+  }
+  
+  button.rock {
+    background-color: #B6A136;
+  }
+  
+  button.ghost {
+    background-color: #735797;
+  }
+  
+  button.dragon {
+    background-color: #6F35FC;
+  }
+  
+  button.dark {
+    background-color: #705746;
+  }
+  
+  button.steel {
+    background-color: #B7B7CE;
+  }
+  
+  button.fairy {
+    background-color: #D685AD;
+  }
+  
+  button.highlighted {
+    border: 2px solid #000000;
+  }
+
+/* Path: src\css\pokemon.css */
+  
+  

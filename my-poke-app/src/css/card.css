@@ -11,7 +11,7 @@
     overflow: hidden;
     position: relative;
     object-fit: contain;
-
+    padding: 1rem; 
   }
   
   .card-image img {
@@ -22,7 +22,7 @@
   }
   
   .card-content {
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     white-space: nowrap; 
     overflow: hidden;
@@ -30,7 +30,7 @@
   
   .card-content h3 {
     margin: 0;
-    font-size: 14px;
+    font-size: 0.7rem;
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
@@ -114,7 +114,7 @@
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.3s ease;
-  margin: 10px;
+  margin: 0px;
   object-fit: contain;
 
 }

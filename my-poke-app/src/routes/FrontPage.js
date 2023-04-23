@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
 import Card from "../components/card";
 import "../css/frontpage.css";
 import Pagination from "../components/Pagination";
 import FilterBox from "../components/FilterBox";
 import filterPokemon from "../helpers/filterPokemon.js";
+
+
 
 function getIDFromPokemon(pokemon) {
   return parseInt(pokemon.url
@@ -20,8 +21,9 @@ function sortListByUrl(list)
 }
 
 function FrontPage() {
+  const [shouldRender, setShouldRender] = useState(false);
   const [generationsCached, setGenerationsCached] = useState([]);
-  const [filterProperties, setFilterProperties] = useState([{ stats: [], height: 0, weight: 0, genRange: [], primaryType: "", secondaryType: "" }]);
+  const [filterProperties, setFilterProperties] = useState([{ stats: [], height: 0, weight: 0, genRange: [], primaryType: "", secondaryType: "" , toggle: false}]);
   const [generation, setGeneration] = useState([]);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(0);
@@ -44,10 +46,10 @@ function FrontPage() {
     setPokemonList(prevList => [...prevList, ...pokemonArray]); // spread the array of pokemon into the state array
   }
 
-  async function onFilterChange(newFilter)
+  const onFilterChange = useCallback((newFilter) =>
   {
     setFilterProperties(newFilter);
-  }
+  }, [filterProperties]);
 
 
 
@@ -76,7 +78,7 @@ function FrontPage() {
       if(!generationsCached.includes(generation[i]))
       {
         getGeneration(generation[i]);
-        generationsCached.push(generation[i]);
+        setGenerationsCached(x => [...x, generation[i]]);
         setLimit(5*responsiveLimit);
       };
     }
@@ -98,7 +100,9 @@ function FrontPage() {
     }
     fetchPokemon();
     console.log("offset: " + offset);
-  }, [offset,max]);
+    setShouldRender(false);
+
+  }, [offset,max, setShouldRender, filteredPokemonList]);
 
   useEffect(() => {
     console.log("currentPokemonList" + currentPokemonList);
@@ -117,30 +121,27 @@ function FrontPage() {
   }, [filterProperties, pokemonList]);
 
   useEffect(() => {
-    console.log("filteredPokemonList: " + filteredPokemonList)
+    console.log("filteredPokemonList: " + filteredPokemonList.map(x => x.name));
     if(filteredPokemonList === undefined) return;
     setMax(filteredPokemonList.length);
     setMin(1);
-    setOffset(1);
+    setOffset(0);
+    setShouldRender(true);
   }, [filteredPokemonList]);
 
   return (
     <div className="App">
-      <div className="filtercontainer"><FilterBox callback={onFilterChange}/></div>
+      <div className="filtercontainer">
+      <FilterBox callback={onFilterChange}/>
+
+      </div>
       <div className="container">
       {
         
       Array.from(currentPokemonList)
-        .reduce((rows, pokemon, index) => {
-          if (index % responsiveLimit === 0) rows.push([]);
-          rows[rows.length - 1].push(pokemon);
-          return rows;
-        }, [])
-        .map((row, index) => (
-          <div className="row" key={index}>
-            {row.map((pokemon) => {
+        .map((pokemon, index) =>  {
               return (
-                <div className="col-2" key={pokemon.id}>
+                <div className="pokemoncard" key={pokemon.id}>
                   <Card
                     id={pokemon.id}
                     pokemonData={pokemon}
@@ -148,8 +149,7 @@ function FrontPage() {
                 </div>
               );
             })}
-          </div>
-        ))}
+        
       {isLoading ? (
         <div className="spinner-border" role="status">
           <span className="visually-hidden">Loading...</span>
@@ -168,6 +168,4 @@ function FrontPage() {
     </div>
   );
 }
-
-
 export default (FrontPage);
